@@ -27,3 +27,8 @@ add_raylib_example(
     edge-bouncing-ball
     examples/edge-bouncing-ball/main.cpp
 )
+
+add_raylib_example(
+    ball-accelerating-toward-mouse
+    examples/ball-accelerating-toward-mouse/main.cpp
+)
