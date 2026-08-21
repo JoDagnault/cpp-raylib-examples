@@ -32,3 +32,8 @@ add_raylib_example(
     ball-accelerating-toward-mouse
     examples/ball-accelerating-toward-mouse/main.cpp
 )
+
+add_raylib_example(
+    bouncing-ball-friction
+    examples/bouncing-ball-friction/main.cpp
+)
