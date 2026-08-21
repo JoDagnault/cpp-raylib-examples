@@ -4,9 +4,9 @@ A collection of small C++ toy projects built with raylib.
 
 ## Examples
 
-- `edge-bouncing-ball` — simulates a ball bouncing off the edges of the
+- `edge-bouncing-ball`: simulates a ball bouncing off the edges of the
   window
-- `ball-accelerating-toward-mouse` - simulates a ball accelerating towards the mouse position
+- `ball-accelerating-toward-mouse`: simulates a ball accelerating towards the mouse position
 
 ## Build and run
 
