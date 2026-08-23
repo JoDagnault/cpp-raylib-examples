@@ -37,3 +37,8 @@ add_raylib_example(
     bouncing-ball-friction
     examples/bouncing-ball-friction/main.cpp
 )
+
+add_raylib_example(
+    rotating-stick
+    examples/rotating-stick/main.cpp
+)

@@ -8,6 +8,7 @@ A collection of small C++ toy projects built with raylib.
   window
 - `ball-accelerating-toward-mouse`: simulates a ball accelerating towards the mouse position
 - `bouncing-ball-friction`: simulates a bouncing ball with friction and restitution coefficients
+- `rotating-stick`: simulates a stick spinning faster over time 
 
 ## Build and run
 
