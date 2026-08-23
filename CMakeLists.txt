@@ -42,3 +42,8 @@ add_raylib_example(
     rotating-stick
     examples/rotating-stick/main.cpp
 )
+
+add_raylib_example(
+    arrow-accelerating-toward-mouse
+    examples/arrow-accelerating-toward-mouse/main.cpp
+)
