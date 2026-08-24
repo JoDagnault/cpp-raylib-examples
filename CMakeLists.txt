@@ -47,3 +47,8 @@ add_raylib_example(
     arrow-accelerating-toward-mouse
     examples/arrow-accelerating-toward-mouse/main.cpp
 )
+
+add_raylib_example(
+    seek-and-flee
+    examples/seek-and-flee/main.cpp
+)

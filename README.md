@@ -10,6 +10,7 @@ A collection of small C++ toy projects built with raylib.
 - `bouncing-ball-friction`: simulates a bouncing ball with friction and restitution coefficients
 - `rotating-stick`: simulates a stick spinning faster over time 
 - `arrow-accelerating-toward-mouse`: simulates an arrow accelerating towards the mouse and pointing in the velocity direction
+- `seek-and-flee`: simulates an arrow seeking or fleeing the mouse with steering forces and debug vectors
 
 ## Build and run
 
