@@ -52,3 +52,8 @@ add_raylib_example(
     seek-and-flee
     examples/seek-and-flee/main.cpp
 )
+
+add_raylib_example(
+    pursuit-and-evade
+    examples/pursuit-and-evade/main.cpp
+)

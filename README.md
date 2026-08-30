@@ -11,6 +11,7 @@ A collection of small C++ toy projects built with raylib.
 - `rotating-stick`: simulates a stick spinning faster over time 
 - `arrow-accelerating-toward-mouse`: simulates an arrow accelerating towards the mouse and pointing in the velocity direction
 - `seek-and-flee`: simulates an arrow seeking or fleeing the mouse with steering forces and debug vectors
+- `pursuit-and-evade`: simulates a red arrow pursuing a green arrow that evades it
 
 ## Build and run
 
