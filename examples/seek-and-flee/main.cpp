@@ -18,7 +18,7 @@ struct Vehicle {
   Vector2 forward;
   Vector2 right;
 
-  void apply_force(Vector2 force) {
+  void applyForce(Vector2 force) {
     acceleration = Vector2Add(acceleration, Vector2Scale(force, 1.0f / mass));
   }
 
@@ -35,7 +35,7 @@ struct Vehicle {
     output.steering_force = Vector2ClampValue(
         Vector2Subtract(output.desired_velocity, velocity), 0.0f, max_force);
 
-    apply_force(output.steering_force);
+    applyForce(output.steering_force);
     return output;
   }
 
@@ -52,7 +52,7 @@ struct Vehicle {
     output.steering_force = Vector2ClampValue(
         Vector2Subtract(output.desired_velocity, velocity), 0.0f, max_force);
 
-    apply_force(output.steering_force);
+    applyForce(output.steering_force);
     return output;
   }
 
@@ -69,7 +69,7 @@ struct Vehicle {
     acceleration = Vector2{0, 0};
   }
 
-  void wrap_edges(float screen_width, float screen_height) {
+  void wrapEdges(float screen_width, float screen_height) {
     if (position.x < 0) {
       position.x += screen_width;
     } else if (position.x >= screen_width) {
@@ -105,41 +105,41 @@ public:
     DrawTriangle(arrow_tip, arrow_bottom_left, arrow_bottom_right, RED);
   }
 
-  void render_debug(const Vehicle &vehicle,
-                    const SteeringOutput &steering) const {
-    constexpr float velocity_scale = 12.0f;
-    constexpr float steering_scale = 30.0f;
-    constexpr float line_thickness = 3.0f;
+  void renderDebug(const Vehicle &vehicle,
+                   const SteeringOutput &steering) const {
+    constexpr float VELOCITY_SCALE = 12.0f;
+    constexpr float STEERING_SCALE = 30.0f;
+    constexpr float LINE_THICKNESS = 3.0f;
 
     DrawLineEx(vehicle.position,
                Vector2Add(vehicle.position,
-                          Vector2Scale(vehicle.velocity, velocity_scale)),
-               line_thickness, SKYBLUE);
+                          Vector2Scale(vehicle.velocity, VELOCITY_SCALE)),
+               LINE_THICKNESS, SKYBLUE);
     DrawLineEx(
         vehicle.position,
         Vector2Add(vehicle.position,
-                   Vector2Scale(steering.desired_velocity, velocity_scale)),
-        line_thickness, LIME);
+                   Vector2Scale(steering.desired_velocity, VELOCITY_SCALE)),
+        LINE_THICKNESS, LIME);
     DrawLineEx(
         vehicle.position,
         Vector2Add(vehicle.position,
-                   Vector2Scale(steering.steering_force, steering_scale)),
-        line_thickness, ORANGE);
+                   Vector2Scale(steering.steering_force, STEERING_SCALE)),
+        LINE_THICKNESS, ORANGE);
 
-    constexpr int info_x = 20;
-    constexpr int info_y = 80;
-    constexpr int font_size = 18;
-    constexpr int line_spacing = 24;
+    constexpr int INFO_X = 20;
+    constexpr int INFO_Y = 80;
+    constexpr int FONT_SIZE = 18;
+    constexpr int LINE_SPACING = 24;
 
     DrawText(TextFormat("Velocity: (%.2f, %.2f)", vehicle.velocity.x,
                         vehicle.velocity.y),
-             info_x, info_y, font_size, SKYBLUE);
+             INFO_X, INFO_Y, FONT_SIZE, SKYBLUE);
     DrawText(TextFormat("Desired: (%.2f, %.2f)", steering.desired_velocity.x,
                         steering.desired_velocity.y),
-             info_x, info_y + line_spacing, font_size, LIME);
+             INFO_X, INFO_Y + LINE_SPACING, FONT_SIZE, LIME);
     DrawText(TextFormat("Steering: (%.2f, %.2f)", steering.steering_force.x,
                         steering.steering_force.y),
-             info_x, info_y + line_spacing * 2, font_size, ORANGE);
+             INFO_X, INFO_Y + LINE_SPACING * 2, FONT_SIZE, ORANGE);
   }
 
 private:
@@ -148,44 +148,44 @@ private:
 };
 
 int main() {
-  constexpr int screen_width = 1200;
-  constexpr int screen_height = 800;
-  constexpr float mass = 10;
-  constexpr float max_force = 2;
-  constexpr float max_speed = 5;
-  constexpr float arrow_length = 30;
-  constexpr float arrow_half_width = 10;
-  constexpr int target_radius = 20;
-  constexpr float behavior_radius = 300;
+  constexpr int SCREEN_WIDTH = 1200;
+  constexpr int SCREEN_HEIGHT = 800;
+  constexpr float MASS = 10;
+  constexpr float MAX_FORCE = 2;
+  constexpr float MAX_SPEED = 5;
+  constexpr float ARROW_LENGTH = 30;
+  constexpr float ARROW_HALF_WIDTH = 10;
+  constexpr int TARGET_RADIUS = 20;
+  constexpr float BEHAVIOR_RADIUS = 300;
 
   std::random_device rd;
   std::mt19937 gen(rd());
-  std::uniform_int_distribution<int> width_dist(0, screen_width);
-  std::uniform_int_distribution<int> height_dist(0, screen_height);
+  std::uniform_int_distribution<int> width_dist(0, SCREEN_WIDTH);
+  std::uniform_int_distribution<int> height_dist(0, SCREEN_HEIGHT);
   std::uniform_real_distribution<float> angle_dist(0.0f, 2.0f * PI);
 
   Vector2 position =
       Vector2{.x = (float)width_dist(gen), .y = (float)height_dist(gen)};
-  Vector2 velocity = Vector2Rotate(Vector2{max_speed, 0}, angle_dist(gen));
+  Vector2 velocity = Vector2Rotate(Vector2{MAX_SPEED, 0}, angle_dist(gen));
   Vector2 forward = Vector2Normalize(velocity);
   Vector2 right = Vector2{.x = -forward.y, .y = forward.x};
 
-  Vehicle vehicle = Vehicle{.mass = mass,
+  Vehicle vehicle = Vehicle{.mass = MASS,
                             .position = position,
                             .velocity = velocity,
                             .acceleration = Vector2{0, 0},
-                            .max_force = max_force,
-                            .max_speed = max_speed,
-                            .radius = behavior_radius,
+                            .max_force = MAX_FORCE,
+                            .max_speed = MAX_SPEED,
+                            .radius = BEHAVIOR_RADIUS,
                             .forward = forward,
                             .right = right};
 
-  VehicleRenderer renderer(arrow_length, arrow_half_width);
+  VehicleRenderer renderer(ARROW_LENGTH, ARROW_HALF_WIDTH);
 
   Rectangle behavior_button = Rectangle{20, 20, 160, 40};
   bool flee_mode = true;
 
-  InitWindow(screen_width, screen_height, "Seek And Flee");
+  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Seek And Flee");
 
   SetTargetFPS(60);
   while (!WindowShouldClose()) {
@@ -202,12 +202,12 @@ int main() {
         flee_mode ? vehicle.flee(mouse_position) : vehicle.seek(mouse_position);
 
     vehicle.update();
-    vehicle.wrap_edges(screen_width, screen_height);
+    vehicle.wrapEdges(SCREEN_WIDTH, SCREEN_HEIGHT);
 
     ClearBackground(BLACK);
 
-    DrawCircleV(mouse_position, target_radius, GREEN);
-    renderer.render_debug(vehicle, steering);
+    DrawCircleV(mouse_position, TARGET_RADIUS, GREEN);
+    renderer.renderDebug(vehicle, steering);
     renderer.render(vehicle);
 
     bool button_hovered =
@@ -216,13 +216,13 @@ int main() {
     DrawRectangleLinesEx(behavior_button, 2, LIGHTGRAY);
 
     const char *button_text = flee_mode ? "Mode: Flee" : "Mode: Seek";
-    constexpr int button_font_size = 20;
-    int button_text_width = MeasureText(button_text, button_font_size);
+    constexpr int BUTTON_FONT_SIZE = 20;
+    int button_text_width = MeasureText(button_text, BUTTON_FONT_SIZE);
     DrawText(
         button_text,
         behavior_button.x + (behavior_button.width - button_text_width) / 2.0f,
-        behavior_button.y + (behavior_button.height - button_font_size) / 2.0f,
-        button_font_size, WHITE);
+        behavior_button.y + (behavior_button.height - BUTTON_FONT_SIZE) / 2.0f,
+        BUTTON_FONT_SIZE, WHITE);
 
     EndDrawing();
   }
