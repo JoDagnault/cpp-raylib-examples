@@ -57,3 +57,8 @@ add_raylib_example(
     pursuit-and-evade
     examples/pursuit-and-evade/main.cpp
 )
+
+add_raylib_example(
+    arrival
+    examples/arrival/main.cpp
+)
