@@ -62,3 +62,8 @@ add_raylib_example(
     arrival
     examples/arrival/main.cpp
 )
+
+add_raylib_example(
+    obstacle-avoidance
+    examples/obstacle-avoidance/main.cpp
+)
