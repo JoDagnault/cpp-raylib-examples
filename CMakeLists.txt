@@ -72,3 +72,8 @@ add_raylib_example(
     wander
     examples/wander/main.cpp
 )
+
+add_raylib_example(
+    forage
+    examples/forage/main.cpp
+)
