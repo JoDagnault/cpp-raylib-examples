@@ -2,6 +2,9 @@
 
 A collection of small C++ toy projects built with raylib.
 
+Inspired by [The Nature of Code](https://natureofcode.com/) by Daniel Shiffman
+and [Steering Behaviors For Autonomous Characters](https://www.red3d.com/cwr/steer/gdc99/) by Craig Reynolds.
+
 ## Examples
 
 - `edge-bouncing-ball`: simulates a ball bouncing off the edges of the
