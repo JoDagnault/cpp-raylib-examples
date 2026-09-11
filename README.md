@@ -17,6 +17,7 @@ and [Steering Behaviors For Autonomous Characters](https://www.red3d.com/cwr/ste
 - `pursuit-and-evade`: simulates a red arrow pursuing a green arrow that evades it
 - `arrival`: simulates an arrow steering toward the mouse and slowing down to stop on it
 - `obstacle-avoidance`: simulates an arrow avoiding circular obstacles
+- `wander`: simulates an arrow wandering around
 
 ## Build and run
 

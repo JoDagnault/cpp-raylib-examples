@@ -67,3 +67,8 @@ add_raylib_example(
     obstacle-avoidance
     examples/obstacle-avoidance/main.cpp
 )
+
+add_raylib_example(
+    wander
+    examples/wander/main.cpp
+)
