@@ -19,6 +19,7 @@ and [Steering Behaviors For Autonomous Characters](https://www.red3d.com/cwr/ste
 - `obstacle-avoidance`: simulates an arrow avoiding circular obstacles
 - `wander`: simulates an arrow wandering around
 - `forage`: simulates an arrow wandering until hungry, then seeking nearby food
+- `3d-terrain`: generates a simple procedural 3D terrain
 
 ## Build and run
 

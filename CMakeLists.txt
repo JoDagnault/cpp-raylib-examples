@@ -77,3 +77,8 @@ add_raylib_example(
     forage
     examples/forage/main.cpp
 )
+
+add_raylib_example(
+  3d-terrain
+  examples/3d-terrain/main.cpp
+)
